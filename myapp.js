@@ -10,7 +10,7 @@ app.route('/')
     res.send('POST ')
   })
   .put((req, res) => {
-    res.send('Update ')
+    res.send('Update method ')
   })
   .delete((req, res) => {
     res.send('Delete ')
