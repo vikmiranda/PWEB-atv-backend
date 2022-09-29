@@ -2,9 +2,11 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
 
+var dados = require("./node_fake_db.js")
 app.route('/')
   .get((req, res) => {
-    res.send('Get')
+    //res.json({ nome: 'Flavio', sobrenome: 'aurelio' })
+    console.log(dados)
   })
   .post((req, res) => {
     res.send('POST ')
