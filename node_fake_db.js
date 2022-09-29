@@ -1,5 +1,5 @@
 
-const lista = [
+const livros = [
     {
       id: 1,  
       titulo: 'Livro do desassossego',
@@ -33,14 +33,20 @@ const lista = [
         ano_lancamento: 2000
     }
   ]
-module.exports = lista
 
-  
-/*function save(entity){}
-
-function findById(id){
-    return Object.keys(lista[id])
+module.exports = {
+    livros,
+     findById(id){
+        return livros[id-1]
+    },
+    addLivro(livro){
+        livro.id = livros.length+1
+        livros.push(livro)
+    }
 }
+
+
+
 
 function findAll(){}               
 
@@ -48,4 +54,4 @@ function count(){}
 
 function del(id){}               
 
-function existsBy(id){}*/
+function existsBy(id){}

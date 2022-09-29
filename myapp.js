@@ -1,24 +1,41 @@
 const express = require('express')
+//const dados = require('./node_fake_db.js')
+//const addLivro = require('./node_fake_db.js')
 const app = express()
 const port = process.env.PORT || 3000
-
-var dados = require("./node_fake_db.js")
-app.route('/')
-  .get((req, res) => {
-    //res.json({ nome: 'Flavio', sobrenome: 'aurelio' })
-    console.log(dados)
-  })
-  .post((req, res) => {
-    res.send('POST ')
-  })
-  .put((req, res) => {
-    res.send('Update method ')
-  })
-  .delete((req, res) => {
-    res.send('Delete ')
-  })
+const fakedb = require('./node_fake_db');
 
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+app.use(express.json())
+
+app.get("/livros", (req, res) => {
+  res.json(fakedb.livros)
+})
+
+
+app.get("/livros/:id", (req, res) => {
+  const { id } = req.params;
+  res.json(fakedb.findById(id))
+})
+
+app.post("/livros", (req, res) => {
+  fakedb.addLivro(req.body);
+  const { titulo } = req.body;
+  res.send('livro ' + titulo +' adicionado')
+})
+
+
+app.put((req, res) => {
+  res.send('Update method ')
+})
+app.delete((req, res) => {
+  res.send('Delete ')
+})
+
+
+
+
