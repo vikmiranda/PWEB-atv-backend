@@ -42,16 +42,36 @@ module.exports = {
     addLivro(livro){
         livro.id = livros.length+1
         livros.push(livro)
-    }
+    },
+    findAll(){
+        return livros
+    }           
+
+
 }
 
-
-
-
-function findAll(){}               
+   
 
 function count(){}
 
-function del(id){}               
+function del(id){
+    for(var i = 0; i < livros.length; i++) {
+        if(livros[i].id===  id){
+            livro = livros[i]
+            livros.pop(livro)
+          break;
+        }
+}               
+}
 
-function existsBy(id){}
+function existsBy(id){
+    for(var i = 0; i < livros.length; i++) {
+        if(livros[i].id===  id){
+            return True
+        }
+        else{
+            return False
+        }
+} 
+    
+}
