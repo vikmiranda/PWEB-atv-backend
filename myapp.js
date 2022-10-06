@@ -32,8 +32,10 @@ app.post("/livros", (req, res) => {
 app.put((req, res) => {
   res.send('Update method ')
 })
-app.delete((req, res) => {
-  res.send('Delete ')
+app.delete("/livros/:id", (req, res) => {
+  const { id } = req.params;
+  fakedb.del(id);
+  res.send('livro removido');
 })
 
 

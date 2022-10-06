@@ -45,24 +45,24 @@ module.exports = {
     },
     findAll(){
         return livros
-    }           
+    },
+
+    del(id){
+        for(var i = 0; i < livros.length; i++) {
+            if(livros[i].id===  id){
+                livro = livros[i]
+                livros.pop(livro)
+              break;
+            }
+    }               
+    }
 
 
 }
 
    
 
-function count(){}
 
-function del(id){
-    for(var i = 0; i < livros.length; i++) {
-        if(livros[i].id===  id){
-            livro = livros[i]
-            livros.pop(livro)
-          break;
-        }
-}               
-}
 
 function existsBy(id){
     for(var i = 0; i < livros.length; i++) {
