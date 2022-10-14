@@ -1,42 +1,34 @@
 const express = require('express')
-//const dados = require('./node_fake_db.js')
-//const addLivro = require('./node_fake_db.js')
+const mongoose = require('mongoose')
 const app = express()
 const port = process.env.PORT || 3000
-const fakedb = require('./node_fake_db');
 
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+app.use(
+  express.urlencoded({
+    extended: true,
+  }),
+)
 
 app.use(express.json())
 
-app.get("/livros", (req, res) => {
-  res.json(fakedb.livros)
-})
+//Rotas da API
+const LivrosRouter = require('./routes/LivrosRoutes')
+app.use('/livros', LivrosRouter)
 
 
-app.get("/livros/:id", (req, res) => {
-  const { id } = req.params;
-  res.json(fakedb.findById(id))
-})
+//conexão com banco mongodb
+const DB_USER = 'apipweb'
+const DB_PASSWORD = encodeURIComponent('lcO74Q0V2lhRpsEP')
 
-app.post("/livros", (req, res) => {
-  fakedb.addLivro(req.body);
-  const { titulo } = req.body;
-  res.send('livro ' + titulo +' adicionado')
+mongoose
+.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@api-pweb.yrrt4wi.mongodb.net/?retryWrites=true&w=majority`).then(() => {
+  console.log('Conectamos ao MongoDB')
+  app.listen(port)
 })
+.catch((err) => console.log(err))
 
 
-app.put((req, res) => {
-  res.send('Update method ')
-})
-app.delete("/livros/:id", (req, res) => {
-  const { id } = req.params;
-  fakedb.del(id);
-  res.send('livro removido');
-})
 
 
 
