@@ -2,15 +2,19 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 const port = process.env.PORT || 3000
+const cors = require('cors');
 
 
-app.use(
+
+app.use(cors());
+
+/*app.use(
   express.urlencoded({
     extended: true,
   }),
-)
+)*/
 
-app.use(express.json())
+app.use(express.json());
 
 //Rotas da API
 const LivrosRouter = require('./routes/LivrosRoutes')

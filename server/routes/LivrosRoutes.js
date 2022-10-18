@@ -2,11 +2,11 @@ const router = require('express').Router()
 const Livro = require('../models/Livro')
 
 //Adicionar Livro
-router.post('/', async (req, res) => {
-  
+router.post('/cadastrar-livro', async (req, res) => {
+    console.log('cheguei aqui')
     //req.body
     const {titulo, autor, isbn, resumo, ano_lancamento} = req.body
-    
+    console.log(titulo)
     //validar se campos estao preenchidos
     if (!titulo){
       res.status(422).json({error: 'O titulo do livro é obrigatório!'})

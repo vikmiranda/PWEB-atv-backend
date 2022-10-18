@@ -3,9 +3,9 @@ const mongoose = require('mongoose')
 const Livro = mongoose.model('Livro', {
     titulo: String,
     autor: String,
-    isbn: Number,
+    isbn: String,
     resumo: String,
-    ano_lancamento: Number
+    ano_lancamento: String
 })
 
 module.exports = Livro
