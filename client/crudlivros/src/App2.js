@@ -15,7 +15,7 @@ function App() {
     };
 
     const handleClickButton = () =>{
-        Axios.post("http://localhost:3000/livros/cadastrar-livro", {
+        Axios.post("localhost:3000/cadastrar-livro", {
             titulo: values.titulo,
             autor:  values.autor,
             isbn:   values.isbn,
@@ -28,42 +28,33 @@ function App() {
 
     return (
         <main className="container">
-            <h2>Cadastrar Livro</h2>
+            <h2>Título do Livro</h2>
             <form action="">
                 <div className="input-field">
-                    <input type="text" name="titulo" id="username" 
-                        placeholder="Título do Livro" onChange ={handleChangeValues}/>
+                    <p>Esse é o título do livro: </p>
                     <div className="underline"></div>
                 </div>
 
                 <div className="input-field">
-                    <input type="text" name="autor" id="password"
-                        placeholder="Autor do Livro" onChange ={handleChangeValues}/>
+                    <p>Esse é o autor do livro: </p>
                     <div className="underline"></div>
                 </div>
 
                 <div className="input-field">
-                    <input type="text" name="isbn" id=""
-                        placeholder="Isbn" onChange ={handleChangeValues}/>
+                    <p>Esse é o ISBN do livro: </p>
                     <div className="underline"></div>
                 </div> 
 
                 <div className="input-field">
-                    <input type="text" name="resumo" id=""
-                        placeholder="Resumo" onChange ={handleChangeValues}/>
+                    <p>Esse é o resumo do livro:</p>
                     <div className="underline"></div>
                 </div>
 
                 <div className="input-field">
-                    <input type="text" name="ano_lancamento" id=""
-                        placeholder="Ano de Lançamento" onChange ={handleChangeValues}/>
+                    <p>Esse é o ano de Lançamento do livro: </p>
                     <div className="underline"></div>
                 </div>
 
-                <div className="div-button">
-                    <button className='button-sub'  onClick={() => handleClickButton()} > Cadastrar</button>
-                </div>
-                
             </form>
 
     </main>
@@ -73,4 +64,4 @@ function App() {
   }
 
   
-  export default App;
+  export default App2;

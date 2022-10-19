@@ -69,6 +69,18 @@ form {
     position: relative;
 }
 
+
+.div-button {
+    color:#1e3c72;
+    padding-top: 1rem;
+    position: relative;
+}
+
+.button-sub{
+    border: double;
+    border-color: blueviolet;
+}
+
 form .input-field:first-child {
     margin-bottom: 0.4rem;
 }
