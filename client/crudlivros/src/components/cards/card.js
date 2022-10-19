@@ -1,40 +1,36 @@
 import React from "react"
+import { NavigationContainer, button } from '@react-navigation/native';
 
 export default function Card(props){
-    return (
-        <main className="container">
-        <h2>TELA EM CARD.JS</h2>
-        <form action="">
-          
+   
+   console.log(`props titulo${props.titulo}`)
+   return (
+        
+    <div className="card-container">
+           
+           <h2>{props.titulo}</h2>
 
-            <div className="input-field">
-                <p> {props.titutlo} </p>
-                <div className="underline"></div>
-            </div>
+           <div className="input-field">
+               <p>Autor: {props.autor} </p>
+               <div className="underline"></div>
+           </div>
 
-            <div className="input-field">
-                <p>{props.titutlo}aqui </p>
-                <div className="underline"></div>
-            </div>
+           <div className="input-field">
+               <p>ISBN: {props.isbn} </p>
+               <div className="underline"></div>
+           </div>
 
-            <div className="input-field">
-                <p>Esse é o ISBN do livro: </p>
-                <div className="underline"></div>
-            </div> 
+           <div className="input-field">
+               <p>Resumo: {props.resumo} </p>
+               <div className="underline"></div>
+           </div>
 
-            <div className="input-field">
-                <p>Esse é o resumo do livro:</p>
-                <div className="underline"></div>
-            </div>
+           <div className="input-field">
+               <p className="ultimo-item">Ano de Lançamento:{props.ano_lancamento} </p>
+               <div className="underline"></div>
+           </div>
 
-            <div className="input-field">
-                <p>Esse é o ano de Lançamento do livro: </p>
-                <div className="underline"></div>
-            </div>
-
-        </form>
-
-</main>
+       </div>
 
 
 

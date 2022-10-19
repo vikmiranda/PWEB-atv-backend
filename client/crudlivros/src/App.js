@@ -2,14 +2,12 @@ import './App.css';
 import React, { useState, useEffect} from 'react';
 import Axios from "axios";
 import Card from './components/cards/card';
-
+import { NavigationContainer } from '@react-navigation/native';
 
 function App() {
-    const [values, setValues] = useState();
+    
     const [listLivros, setListLivros] = useState();
-    console.log(listLivros)
-
-
+    const [values, setValues] = useState();
     const handleChangeValues = (value) => {
         setValues((prevValue) =>({
             ...prevValue,
@@ -38,10 +36,11 @@ function App() {
     
     }, []);
 
-
-
+    
     return (
+    <NavigationContainer>{
         <main className="container">
+    
             <h2>Cadastrar Livro</h2>
             <form action="">
                 <div className="input-field">
@@ -79,28 +78,35 @@ function App() {
                 </div>
                 
             </form>
-            {typeof listLivros !== "undefined" && listLivros.map((value)=>{
-                return (
-                <Card 
-                key={value._id}
-                listCard ={listLivros} 
-                setListCard = {setListLivros}
-                titulo = {value.titulo}
-                autor = {value.autor}
-                isbn = {value.isbn}
-                resumo = {value.resumo}
-                ano_lancamento = {value.ano_lancamento}
-                ></Card>);
-            })}
-              
-            
 
-
-    </main>
-     
+        
+        
+        {typeof listLivros !== "undefined" && 
+        listLivros.map((value) => {
+       
+           return <Card 
+                    key={value._id}
+                    listCard ={listLivros} 
+                    setlistCard={setListLivros}
+                    id={value.id}
+                    titulo = {value.titulo}
+                    autor = {value.autor}
+                    isbn = {value.isbn}
+                    resumo = {value.resumo}
+                    ano_lancamento = {value.ano_lancamento}
+                    ></Card>;
+        }
+        
+        )}
  
-    );
-  }
+          
+        
 
-  
+</main>
+    
+        }</NavigationContainer>
+  );
+}
+
+    
   export default App;
