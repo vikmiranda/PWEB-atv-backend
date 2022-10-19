@@ -1,9 +1,14 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import Axios from "axios";
+import Card from './components/cards/card';
+
 
 function App() {
     const [values, setValues] = useState();
+    const [listLivros, setListLivros] = useState();
+    console.log(listLivros)
+
 
     const handleChangeValues = (value) => {
         setValues((prevValue) =>({
@@ -25,6 +30,15 @@ function App() {
             console.log(response);
         });
     };
+
+    useEffect(()=>{
+        Axios.get("http://localhost:3000/livros").then((response)=>{
+            setListLivros(response.data);
+        });
+    
+    }, []);
+
+
 
     return (
         <main className="container">
@@ -65,6 +79,22 @@ function App() {
                 </div>
                 
             </form>
+            {typeof listLivros !== "undefined" && listLivros.map((value)=>{
+                return (
+                <Card 
+                key={value._id}
+                listCard ={listLivros} 
+                setListCard = {setListLivros}
+                titulo = {value.titulo}
+                autor = {value.autor}
+                isbn = {value.isbn}
+                resumo = {value.resumo}
+                ano_lancamento = {value.ano_lancamento}
+                ></Card>);
+            })}
+              
+            
+
 
     </main>
      

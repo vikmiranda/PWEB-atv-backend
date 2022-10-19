@@ -15,12 +15,8 @@ function App() {
     };
 
     const handleClickButton = () =>{
-        Axios.post("localhost:3000/cadastrar-livro", {
-            titulo: values.titulo,
-            autor:  values.autor,
-            isbn:   values.isbn,
-            resumo: values.resumo,
-            ano_lancamento: values.ano_lancamento,
+        Axios.get("localhost:3000/livros", {
+            
         }).then((response) => {
             console.log(response);
         });
@@ -30,6 +26,8 @@ function App() {
         <main className="container">
             <h2>Título do Livro</h2>
             <form action="">
+              
+
                 <div className="input-field">
                     <p>Esse é o título do livro: </p>
                     <div className="underline"></div>
