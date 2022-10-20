@@ -11,7 +11,23 @@ router.post('/cadastrar-livro', async (req, res) => {
       res.status(422).json({error: 'O titulo do livro é obrigatório!'})
       return
     }
-  
+    if (!autor){
+        res.status(422).json({error: 'O AUTOR do livro é obrigatório!'})
+        return
+      }
+    if (!isbn){
+        res.status(422).json({error: 'O ISBN do livro é obrigatório!'})
+        return
+    }  
+    if (!resumo){
+        res.status(422).json({error: 'O RESUMO do livro é obrigatório!'})
+        return
+      }
+      if (!ano_lancamento){
+        res.status(422).json({error: 'O ANO DE LANÇAMENTO do livro é obrigatório!'})
+        return
+      }
+      
     const livro ={
       titulo,
       autor,
@@ -111,7 +127,7 @@ router.delete('/:id', async (req, res) => {
 
     try {
         
-        await Livro.deleteOne({id: id})
+        await Livro.deleteOne({_id: id})
         res.status(200).json({message: 'O livro foi deletado!'})
 
     } catch (error) {
